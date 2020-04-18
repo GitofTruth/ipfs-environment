@@ -22,11 +22,11 @@ tar -zxvf go-ipfs_v0.4.23_linux-amd64.tar.gz
 sudo mv go-ipfs/ipfs /usr/local/bin/
 
 
-#add peer4 user
-useradd -m -s /bin/bash -U peer4 -u 666 
-cp -pr /home/vagrant/.ssh /home/peer4/
-chown -R peer4:peer4 /home/peer4
-echo "%peer4 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/peer4
+# #add peer5 user
+# useradd -m -s /bin/bash -U peer5 -u 666 
+# cp -pr /home/vagrant/.ssh /home/peer5/
+# chown -R peer5:peer5 /home/peer5
+# echo "%peer5 ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/peer5
 
 #Install IPFS CLUSTER
 cd ~
@@ -43,22 +43,23 @@ sudo cp ipfs-cluster-ctl /usr/local/bin
 
 
 #Peer joins ipfs private network
-IPFS_PATH=/home/peer4/.ipfs ipfs init
-echo -e "/key/swarm/psk/1.0.0/\n/base16/\n91103cdcf9bb04dd3ff511859f447e53eb6f9a667774d9a28460ef1900bef812" > ~/.ipfs/swarm.key
-IPFS_PATH=/home/peer4/.ipfs ipfs bootstrap rm --all
-IPFS_PATH=/home/peer4/.ipfs ipfs config show
+# IPFS_PATH=/home/peer5/.ipfs ipfs init
+# echo -e "/key/swarm/psk/1.0.0/\n/base16/\n91103cdcf9bb04dd3ff511859f447e53eb6f9a667774d9a28460ef1900bef812" > ~/.ipfs/swarm.key
+# IPFS_PATH=/home/peer5/.ipfs ipfs bootstrap rm --all
+# IPFS_PATH=/home/peer5/.ipfs ipfs config show
 
-IPFS_PATH=/home/peer4/.ipfs ipfs bootstrap add /ip4/192.168.33.10/tcp/4001/ipfs/QmdDuTgruwB19LZJsNAc3kfoJf8FBw5ZDKG2fAAWJbUUSZ
+# IPFS_PATH=/home/peer5/.ipfs ipfs bootstrap add /ip4/192.168.33.10/tcp/4001/ipfs/QmdDuTgruwB19LZJsNAc3kfoJf8FBw5ZDKG2fAAWJbUUSZ
 
-export LIBP2P_FORCE_PNET=1
+# export LIBP2P_FORCE_PNET=1
 
-# chown -R peer4:peer4 /home/peer4/.ipfs 
-# IPFS_PATH=/home/peer4/.ipfs ipfs daemon &
+# chown -R peer5:peer5 /home/peer5/.ipfs 
+
+# IPFS_PATH=/home/peer5/.ipfs ipfs daemon &
 
 # mkdir ipfstest
 # cd ipfstest
 # echo "Hello World!" > file1.txt
-# IPFS_PATH=/home/peer4/.ipfs  ipfs add file1.txt
+# IPFS_PATH=/home/peer5/.ipfs  ipfs add file1.txt
 
 
 # #Peer joins cluster

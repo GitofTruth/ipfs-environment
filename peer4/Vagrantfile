@@ -3,51 +3,50 @@
 
 Vagrant.configure("2") do |config|
 
-    #Box Settings
-    config.vm.box = "bento/ubuntu-16.04"
-    config.vm.define "vm-peer4"
-  
-      # Provider Settings
-      config.vm.provider "virtualbox" do |vb|
-        vb.memory = 2048
-        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-        vb.cpus = 4
-      end
-  
-    # Network Settings
-    # config.vm.network "forwarded_port", guest: 80, host: 8080
-    # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-    config.vm.network "private_network", ip: "192.168.33.13"
-    # config.vm.network :forwarded_port, guest: 4001, host: 4001
-    # config.vm.network :forwarded_port, guest: 5001, host: 5001
-    # config.vm.network :forwarded_port, guest: 8080, host: 8080
+  #Box Settings
+  config.vm.box = "bento/ubuntu-16.04"
+  config.vm.define "vm-peer4"
 
-    # config.vm.network :forwarded_port, guest: 8000, host: 8000
-    # config.vm.network :forwarded_port, guest: 8545, host: 8545
-    # config.vm.network "public_network"
-  
-    # Folder Settings
-    config.vm.synced_folder ".", "/var/www/html", :nfs => {:mount_options => ["dmode=777", "fmode=666"]}
-    
-    # config.vm.synced_folder ".", "/home/peer3/"
-
-
-  
-  
-  
-    # Provision Settings
-    # config.vm.provision "shell", inline: <<-SHELL
-    #   apt-get update
-    #   apt-get install -y apache2
-    # SHELL
-    config.vm.provision "shell", path: "bootstrap-ipfs.sh"
-
-    VAGRANT_COMMAND = ARGV[0]
-    if VAGRANT_COMMAND == "ssh"
-      config.ssh.username = 'peer4'
-      config.ssh.password = ''
+    # Provider Settings
+    config.vm.provider "virtualbox" do |vb|
+      vb.memory = 2048
+      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      vb.cpus = 4
     end
 
-    
-  end
+  # Network Settings
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+  config.vm.network "private_network", ip: "192.168.33.13"
+  # config.vm.network :forwarded_port, guest: 4001, host: 4001
+  # config.vm.network :forwarded_port, guest: 5001, host: 5001
+  # config.vm.network :forwarded_port, guest: 8080, host: 8080
+
+  # config.vm.network :forwarded_port, guest: 8000, host: 8000
+  # config.vm.network :forwarded_port, guest: 8545, host: 8545
+  # config.vm.network "public_network"
+
+  # Folder Settings
+  config.vm.synced_folder "../setup", "/var/local", :nfs => {:mount_options => ["dmode=777", "fmode=666"]}
   
+  # config.vm.synced_folder ".", "/home/peer3/"
+
+
+
+
+
+  # Provision Settings
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
+  config.vm.provision "shell", path: "../setup/bootstrap-ipfs.sh"
+
+  VAGRANT_COMMAND = ARGV[0]
+  if VAGRANT_COMMAND == "ssh"
+    config.ssh.username = 'peer4'
+    config.ssh.password = ''
+  end
+
+  
+end
