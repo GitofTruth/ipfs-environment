@@ -1,9 +1,11 @@
 sudo rm -rf ~/.ipfs
 
 ipfs init
-ipfs bootstrap rm --all
+echo -e "/key/swarm/psk/1.0.0/\n/base16/\n91103cdcf9bb04dd3ff511859f447e53eb6f9a667774d9a28460ef1900bef812" > ~/.ipfs/swarm.key
 
-sudo cp -a /var/local/swarm.key  ~/.ipfs/
+cp -a ~/.ipfs/swarm.key /var/local
+
+ipfs bootstrap rm --all
 ipfs config show
 
 ipfs bootstrap add /ip4/192.168.33.10/tcp/4001/ipfs/QmdDuTgruwB19LZJsNAc3kfoJf8FBw5ZDKG2fAAWJbUUSZ
