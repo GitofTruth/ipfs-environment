@@ -6,7 +6,7 @@ export CLUSTER_SECRET=220158bf2e0aae7d932ac0f4aa2a52b8041eb0915a6c5f9097bd1f40da
 echo $CLUSTER_SECRET
 
 ipfs-cluster-service init
-ipfs-cluster-service daemon --bootstrap /ip4/192.168.33.10/tcp/9096/ipfs/12D3KooWMWTuvVFP39MuRF5zkThCWRygYWfs9dEtVHEnAnbwqkVT
+ipfs-cluster-service daemon --bootstrap /ip4/192.168.33.10/tcp/9096/ipfs/12D3KooWH4GPFuHJXUHNXLePEeE8RkriokRUJ4fxk8HEPjxpb73A
 
 sudo rm -rf /etc/systemd/system/ipfs-cluster.service
 

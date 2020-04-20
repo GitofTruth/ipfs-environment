@@ -11,6 +11,6 @@ cp -a /var/local/. /home/$1
 chown -R $1:$1 /home/$1
 
 echo 'PATH=$PATH:/usr/local/go/bin' >> /home/$1/.profile
-source ~/.profile
+# source /home/$1/.profile
 
 su $1
