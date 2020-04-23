@@ -6,7 +6,7 @@ sudo kill -9 $(sudo lsof -t -i:4001)
 ipfs init
 ipfs bootstrap rm --all
 
-sudo cp -a /var/local/swarm.key  ~/.ipfs/
+sudo cp -a swarm.key  ~/.ipfs/
 
 ipfs config Addresses.API /ip4/0.0.0.0/tcp/5001
 ipfs config Addresses.Gateway /ip4/0.0.0.0/tcp/8080

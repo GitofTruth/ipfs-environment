@@ -8,7 +8,7 @@ echo -e "/key/swarm/psk/1.0.0/\n/base16/\n`tr -dc 'a-f0-9' < /dev/urandom | head
 
 # echo -e "/key/swarm/psk/1.0.0/\n/base16/\n91103cdcf9bb04dd3ff511859f447e53eb6f9a667774d9a28460ef1900bef812" > ~/.ipfs/swarm.key
 
-cp -a ~/.ipfs/swarm.key /var/local
+sudo cp -a ~/.ipfs/swarm.key /var/local
 
 ipfs bootstrap rm --all
 
